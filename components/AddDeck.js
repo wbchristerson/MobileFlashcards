@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { View, Text, TouchableOpacity, TextInput, KeyboardAvoidingView } from 'react-native'
+import { saveDeckTitle } from '../utils/DeckAPI'
 
 // function SubmitBtn ({ onPress }) {
 //   return (
@@ -12,8 +13,7 @@ import { View, Text, TouchableOpacity, TextInput, KeyboardAvoidingView } from 'r
 
 export default class AddDeck extends Component {
   state = {
-    title: '',
-    input: ''
+    title: ''
   }
 
   handlePress = () => {
@@ -21,21 +21,25 @@ export default class AddDeck extends Component {
   }
 
   submit = () => {
-    let title = this.state.title
+    let newTitle = this.state.title
     this.setState({
       title: ''
     })
+    saveDeckTitle(newTitle)
   }
 
-  handleTextChange = (newInput) => {
+  handleTextChange = ({newInput}) => {
     this.setState({
-      input: newInput
+      title: newInput
     })
   }
 
   // <Text style={styles.btnText}>Submit</Text>
   // <TouchableOpacity style={styles.btn} onPress={this.handlePress}>
   render() {
+    let x = this.state.title
+    // let x = this.state.title
+    // console.log(x)
     return(
       <KeyboardAvoidingView behavior='padding'>
         <Text>What is the title of your new deck?</Text>
@@ -44,7 +48,7 @@ export default class AddDeck extends Component {
         <TouchableOpacity onPress={this.submit}>
           <Text>SUBMIT</Text>
         </TouchableOpacity>
-        <Text>State: {this.state.title}</Text>
+        <Text>{x}</Text>
       </KeyboardAvoidingView>
     )
   }
