@@ -13,7 +13,7 @@ import { saveDeckTitle } from '../utils/DeckAPI'
 
 export default class AddDeck extends Component {
   state = {
-    title: ''
+    input: 'w',
   }
 
   handlePress = () => {
@@ -22,33 +22,34 @@ export default class AddDeck extends Component {
 
   submit = () => {
     let newTitle = this.state.title
-    this.setState({
-      title: ''
-    })
+    this.setState(() => ({
+      input: ''
+    }))
     saveDeckTitle(newTitle)
   }
 
-  handleTextChange = ({newInput}) => {
+  handleTextChange = (input) => {
     this.setState({
-      title: newInput
+      input: input
     })
+    // this.setState(() => ({
+    //   input
+    // }))
   }
 
   // <Text style={styles.btnText}>Submit</Text>
   // <TouchableOpacity style={styles.btn} onPress={this.handlePress}>
   render() {
-    let x = this.state.title
-    // let x = this.state.title
-    // console.log(x)
+    let { input } = this.state
     return(
       <KeyboardAvoidingView behavior='padding'>
+        <Text>Year: {input}</Text>
         <Text>What is the title of your new deck?</Text>
-        <Text>Echo!</Text>
-        <TextInput value={this.state.input} onChange={this.handleTextChange}/>
+        <TextInput value={input} onChangeText={this.handleTextChange}/>
         <TouchableOpacity onPress={this.submit}>
           <Text>SUBMIT</Text>
         </TouchableOpacity>
-        <Text>{x}</Text>
+        <Text>Title: {input}</Text>
       </KeyboardAvoidingView>
     )
   }
