@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, TouchableOpacity, TextInput, KeyboardAvoidingView } from 'react-native'
 
 // function SubmitBtn ({ onPress }) {
 //   return (
@@ -12,14 +12,40 @@ import { View, Text } from 'react-native'
 
 export default class AddDeck extends Component {
   state = {
-    title: ''
+    title: '',
+    input: ''
   }
 
+  handlePress = () => {
+    alert('Hello!')
+  }
+
+  submit = () => {
+    let title = this.state.title
+    this.setState({
+      title: ''
+    })
+  }
+
+  handleTextChange = (newInput) => {
+    this.setState({
+      input: newInput
+    })
+  }
+
+  // <Text style={styles.btnText}>Submit</Text>
+  // <TouchableOpacity style={styles.btn} onPress={this.handlePress}>
   render() {
     return(
-      <View>
+      <KeyboardAvoidingView behavior='padding'>
+        <Text>What is the title of your new deck?</Text>
         <Text>Echo!</Text>
-      </View>
+        <TextInput value={this.state.input} onChange={this.handleTextChange}/>
+        <TouchableOpacity onPress={this.submit}>
+          <Text>SUBMIT</Text>
+        </TouchableOpacity>
+        <Text>State: {this.state.title}</Text>
+      </KeyboardAvoidingView>
     )
   }
 }
