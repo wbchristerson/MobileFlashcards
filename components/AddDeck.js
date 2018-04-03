@@ -1,55 +1,65 @@
 import React, { Component } from 'react'
 import { View, Text, TouchableOpacity, TextInput, KeyboardAvoidingView } from 'react-native'
-import { saveDeckTitle } from '../utils/DeckAPI'
+import { saveDeckTitle, getDecks } from '../utils/DeckAPI'
 
-// function SubmitBtn ({ onPress }) {
-//   return (
-//     <TouchableOpacity
-//       onPress={onPress}>
-//         <Text>SUBMIT</Text>
-//     </TouchableOpacity>
-//   )
-// }
 
 export default class AddDeck extends Component {
   state = {
-    input: 'w',
+    input: '',
+    decks: {},
   }
 
-  handlePress = () => {
-    alert('Hello!')
+  componentDidMount() {
+    getDecks()
+    .then((results) => {
+      this.setState({
+        decks: JSON.parse(results)
+      })
+    })
   }
 
   submit = () => {
-    let newTitle = this.state.title
-    this.setState(() => ({
-      input: ''
-    }))
+    let newTitle = this.state.input
     saveDeckTitle(newTitle)
+    this.setState((prevState) => ({
+      input: '',
+      decks: {
+        ...prevState.decks,
+        [newTitle]: {}
+      }
+    }))
   }
 
-  handleTextChange = (input) => {
+  handleTextChange = (newInput) => {
     this.setState({
-      input: input
+      input: newInput
     })
-    // this.setState(() => ({
-    //   input
-    // }))
   }
 
-  // <Text style={styles.btnText}>Submit</Text>
-  // <TouchableOpacity style={styles.btn} onPress={this.handlePress}>
   render() {
-    let { input } = this.state
+    let input = this.state.input
+    let akeys = [];
+    console.log("Decks: ", this.state.decks)
+    for (var key in (this.state.decks)) {
+      akeys.push(key);
+      console.log('Key: ', key)
+    }
     return(
       <KeyboardAvoidingView behavior='padding'>
-        <Text>Year: {input}</Text>
+        <View>
+          <Text>Keys: {akeys.length}</Text>
+          {akeys.map((attr) => {
+            return (
+              <Text key={attr}>{attr}</Text>
+            )
+          })}
+        </View>
+        <Text>Title: {input}</Text>
         <Text>What is the title of your new deck?</Text>
         <TextInput value={input} onChangeText={this.handleTextChange}/>
         <TouchableOpacity onPress={this.submit}>
           <Text>SUBMIT</Text>
         </TouchableOpacity>
-        <Text>Title: {input}</Text>
       </KeyboardAvoidingView>
     )
   }
