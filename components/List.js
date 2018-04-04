@@ -4,69 +4,22 @@ import { getDecks } from '../utils/DeckAPI'
 import { connect } from 'react-redux'
 import { getDecksFromStorage } from '../actions'
 
-// function DeckTitleBlock({title, cardCount}) {
-//   return (
-//     <View>
-//       <TouchableOpacity onPress={() => this.props.navigation.navigate(
-//         'Deck',
-//         { entryId: title })}
-//         style={{flex: 1, flexWrap: 'wrap'}}>
-//         <Text style={{fontSize: 30}}>Title: {title}</Text>
-//         <Text style={{fontSize: 30}}>Number Of Cards: {cardCount}</Text>
-//       </TouchableOpacity>
-//     </View>
-//   )
-// }
-
-// <View style={{flex: 1, flexWrap: 'wrap'}}>
-//   <Text style={{fontSize: 30}}>Title: {title}</Text>
-//   <Text style={{fontSize: 30}}>Number Of Cards: {cardCount}</Text>
-// </View>
-
 class List extends Component {
   componentDidMount() {
     this.props.dispatch(getDecksFromStorage())
   }
 
-  DeckTitleBlock({title, cardCount}) {
-    return (
-      <View>
-        <TouchableOpacity onPress={() => this.props.navigation.navigate(
-          'Deck',
-          { entryId: title })}
-          style={{flex: 1, flexWrap: 'wrap'}}>
-          <Text style={{fontSize: 30}}>Title: {title}</Text>
-          <Text style={{fontSize: 30}}>Number Of Cards: {cardCount}</Text>
-        </TouchableOpacity>
-      </View>
-    )
-  }
-
-  /*
-  *  Collection of objects of the form:
-  *   {
-  *    name: 'Subject',
-  *    count: 0
-  *   }
-  */
-  // state = {
-  //   deckNameList: []
-  // }
-
-  // componentDidMount() {
-  //   this.dispatch(getDecksFromStorage())
-  // }
-
-  // renderItem = ({item}) => {
-  //   return <DeckTitleBlock />
-  // }
-
   render() {
+    let akeys = [];
+    for (var key in (this.props.decks)) {
+      akeys.push(key);
+    }
+    // data={this.props.decks ? akeys : []}
     console.log("Decks: ", this.props.decks)
     return (
       <View style={{flex: 1,}}>
         <FlatList
-          data={this.props.decks ? Object.keys(this.props.decks) : []}
+          data={akeys}
           renderItem={({item}) => (
             <View>
               <TouchableOpacity onPress={() => this.props.navigation.navigate(

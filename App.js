@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, Platform } from 'react-native'
 import List from './components/List'
 import AddDeck from './components/AddDeck'
 import Deck from './components/Deck'
+import AddCard from './components/AddCard'
 import { TabNavigator, StackNavigator } from 'react-navigation'
 import { createStore, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
@@ -74,6 +75,9 @@ const MainNavigator = StackNavigator({
         backgroundColor: '#74e0db',
       }
     }
+  },
+  NewCard: {
+    screen: AddCard
   }
 })
 // '#885ee5'

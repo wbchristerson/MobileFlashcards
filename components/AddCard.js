@@ -1,0 +1,85 @@
+import React, { Component } from 'react'
+import { View, Text, TouchableOpacity, TextInput, KeyboardAvoidingView, StyleSheet } from 'react-native'
+import { saveDeckTitle, getDecks } from '../utils/DeckAPI'
+import { connect } from 'react-redux'
+import { addDeck, addDeckToStorage, addCardToDeck, addCardToStorage } from '../actions'
+
+
+class AddDeck extends Component {
+  state = {
+    questionInput: '',
+    answerInput: '',
+  }
+
+  static navigationOptions = ({ navigation }) => {
+    const { entryId } = navigation.state.params
+    let strId = entryId.item
+    return {
+      title: `Add Card To '${strId}'`
+    }
+  }
+
+  handleQuestionChange = (newInput) => {
+    this.setState({
+      questionInput: newInput
+    })
+  }
+
+  handleAnswerChange = (newInput) => {
+    this.setState({
+      answerInput: newInput
+    })
+  }
+
+  submit = () => {
+    let newQuestion = this.state.questionInput
+    let newAnswer = this.state.answerInput
+    this.props.dispatch(addCardToDeck(this.props.deck.title, newQuestion, newAnswer))
+    // this.props.dispatch(addCardToStorage(navigation.state.params.entryId.item, newQuestion, newAnswer))
+    this.setState({
+      questionInput: '',
+      answerInput: '',
+    })
+  }
+
+  render() {
+    let questionInput = this.state.questionInput
+    let answerInput = this.state.answerInput
+    return(
+      <KeyboardAvoidingView behavior='padding'>
+        <Text>Leprechaun</Text>
+        <TextInput value={questionInput} placeholder='Question' placeholderTextColor='#75a38e' onChangeText={this.handleQuestionChange}/>
+        <TextInput value={answerInput} placeholder='Answer' placeholderTextColor='#75a38e' onChangeText={this.handleAnswerChange}/>
+        <TouchableOpacity onPress={this.submit}>
+          <Text>SUBMIT</Text>
+        </TouchableOpacity>
+      </KeyboardAvoidingView>
+    )
+  }
+}
+// <KeyboardAvoidingView behavior='padding'>
+// <View>
+// <Text>Keys: {akeys.length}</Text>
+// {akeys.map((attr) => {
+//   console.log("Red: ", attr)
+//   return (
+//     <Text key={attr}>{attr}</Text>
+//   )
+// })}
+// </View>
+// <Text>Title: {input}</Text>
+// <Text>What is the title of your new deck?</Text>
+// <TextInput value={input} onChangeText={this.handleTextChange}/>
+// <TouchableOpacity onPress={this.submit}>
+// <Text>SUBMIT</Text>
+// </TouchableOpacity>
+// </KeyboardAvoidingView>
+
+function mapStateToProps (state, { navigation }) {
+  const { entryId } = navigation.state.params
+  return {
+    deck: state.decks[entryId.item],
+  }
+}
+
+export default connect(mapStateToProps)(AddDeck)
