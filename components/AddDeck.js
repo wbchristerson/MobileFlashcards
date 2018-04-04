@@ -43,7 +43,7 @@ class AddDeck extends Component {
         </View>
         <Text>Title: {input}</Text>
         <Text>What is the title of your new deck?</Text>
-        <TextInput value={input} onChangeText={this.handleTextChange}/>
+        <TextInput value={input} onChangeText={this.handleTextChange} placeholder='Deck Title' />
         <TouchableOpacity onPress={this.submit}>
           <Text>SUBMIT</Text>
         </TouchableOpacity>
