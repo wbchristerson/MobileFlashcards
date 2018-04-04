@@ -41,10 +41,9 @@ export default class AddDeck extends Component {
     let akeys = [];
     for (var key in (this.state.decks)) {
       akeys.push(key);
-      console.log('Key: ', key)
     }
     return(
-      <KeyboardAvoidingView behavior='padding' style={{height: 30, width: 30}}>
+      <KeyboardAvoidingView behavior='padding'>
         <View>
           <Text>Keys: {akeys.length}</Text>
           {akeys.map((attr) => {
