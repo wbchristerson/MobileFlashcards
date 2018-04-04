@@ -1,33 +1,32 @@
 import React, { Component } from 'react'
 import { View, Text, TouchableOpacity, TextInput, KeyboardAvoidingView, StyleSheet } from 'react-native'
 import { saveDeckTitle, getDecks } from '../utils/DeckAPI'
+import { connect } from 'react-redux'
+import { addDeck, addDeckToStorage } from '../actions'
 
 
-export default class AddDeck extends Component {
+class AddDeck extends Component {
   state = {
     input: '',
-    decks: {},
+    // decks: {},
   }
 
-  componentDidMount() {
-    getDecks()
-    .then((results) => {
-      this.setState({
-        decks: JSON.parse(results)
-      })
-    })
-  }
+  // componentDidMount() {
+  //   getDecks()
+  //   .then((results) => {
+  //     this.setState({
+  //       decks: JSON.parse(results)
+  //     })
+  //   })
+  // }
 
   submit = () => {
     let newTitle = this.state.input
-    saveDeckTitle(newTitle)
-    this.setState((prevState) => ({
-      input: '',
-      decks: {
-        ...prevState.decks,
-        [newTitle]: {}
-      }
-    }))
+    this.props.dispatch(addDeck(newTitle))
+    this.props.dispatch(addDeckToStorage(newTitle))
+    this.setState({
+      input: ''
+    })
   }
 
   handleTextChange = (newInput) => {
@@ -38,15 +37,19 @@ export default class AddDeck extends Component {
 
   render() {
     let input = this.state.input
+    console.log("Hello")
     let akeys = [];
-    for (var key in (this.state.decks)) {
+    console.log("A")
+    for (var key in (this.props.decks)) {
       akeys.push(key);
     }
+    console.log("B: ", akeys.length)
     return(
       <KeyboardAvoidingView behavior='padding'>
         <View>
           <Text>Keys: {akeys.length}</Text>
           {akeys.map((attr) => {
+            console.log("Red: ", attr)
             return (
               <Text key={attr}>{attr}</Text>
             )
@@ -62,3 +65,11 @@ export default class AddDeck extends Component {
     )
   }
 }
+
+function mapStateToProps (state) {
+  return {
+    decks: state.decks
+  }
+}
+
+export default connect(mapStateToProps)(AddDeck)

@@ -2,8 +2,9 @@ import React from 'react';
 import { StyleSheet, Text, View, Platform } from 'react-native'
 import List from './components/List'
 import AddDeck from './components/AddDeck'
-import { TabNavigator } from 'react-navigation'
-import { createStore } from 'redux'
+import Deck from './components/Deck'
+import { TabNavigator, StackNavigator } from 'react-navigation'
+import { createStore, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
 import { Provider } from 'react-redux'
 import reducer from './reducers'
@@ -53,23 +54,49 @@ const Tabs = TabNavigator({
   }
 })
 
-// const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+function SingleDeck() {
+  return (
+    <View>
+      <Text style={{fontSize: 40}}>Dashboard</Text>
+    </View>
+  )
+}
 
-// const store = createStore(
-//   reducer
-// )
-// composeEnhancers(applyMiddleware(thunk))
+const MainNavigator = StackNavigator({
+  Home: {
+    screen: Tabs,
+  },
+  SingleDeck: {
+    screen: Deck,
+    navigationOptions: {
+      headerTintColor: 'black',
+      headerStyle: {
+        backgroundColor: '#1de25f',
+      }
+    }
+  }
+})
+// '#885ee5'
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+
+const store = createStore(
+  reducer,
+  composeEnhancers(applyMiddleware(thunk))
+)
 
 export default class App extends React.Component {
   render() {
     return (
-      <Provider store={createStore(reducer)}>
+      <Provider store={store}>
         <View style={styles.container}>
           <View style={{flexDirection: 'row', flex: 1}}>
-            <Tabs/>
+            <MainNavigator />
           </View>
         </View>
       </Provider>
     );
   }
 }
+// <Tabs/>
+// <Stack />

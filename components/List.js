@@ -1,21 +1,47 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet, FlatList } from 'react-native'
+import { View, Text, StyleSheet, FlatList, TouchableOpacity } from 'react-native'
 import { getDecks } from '../utils/DeckAPI'
 import { connect } from 'react-redux'
-import { receiveDecks } from '../actions'
+import { getDecksFromStorage } from '../actions'
 
-function DeckTitleBlock() {
-  return (
-    <View>
-      <View style={{flex: 1, flexWrap: 'wrap'}}>
-        <Text style={{fontSize: 30}}>Title: Fire</Text>
-        <Text style={{fontSize: 30}}>Number Of Cards: 0</Text>
-      </View>
-    </View>
-  )
-}
+// function DeckTitleBlock({title, cardCount}) {
+//   return (
+//     <View>
+//       <TouchableOpacity onPress={() => this.props.navigation.navigate(
+//         'Deck',
+//         { entryId: title })}
+//         style={{flex: 1, flexWrap: 'wrap'}}>
+//         <Text style={{fontSize: 30}}>Title: {title}</Text>
+//         <Text style={{fontSize: 30}}>Number Of Cards: {cardCount}</Text>
+//       </TouchableOpacity>
+//     </View>
+//   )
+// }
+
+// <View style={{flex: 1, flexWrap: 'wrap'}}>
+//   <Text style={{fontSize: 30}}>Title: {title}</Text>
+//   <Text style={{fontSize: 30}}>Number Of Cards: {cardCount}</Text>
+// </View>
 
 class List extends Component {
+  componentDidMount() {
+    this.props.dispatch(getDecksFromStorage())
+  }
+
+  DeckTitleBlock({title, cardCount}) {
+    return (
+      <View>
+        <TouchableOpacity onPress={() => this.props.navigation.navigate(
+          'Deck',
+          { entryId: title })}
+          style={{flex: 1, flexWrap: 'wrap'}}>
+          <Text style={{fontSize: 30}}>Title: {title}</Text>
+          <Text style={{fontSize: 30}}>Number Of Cards: {cardCount}</Text>
+        </TouchableOpacity>
+      </View>
+    )
+  }
+
   /*
   *  Collection of objects of the form:
   *   {
@@ -23,23 +49,13 @@ class List extends Component {
   *    count: 0
   *   }
   */
-  state = {
-    deckNameList: []
-  }
+  // state = {
+  //   deckNameList: []
+  // }
 
-  componentDidMount() {
-    getDecks()
-    .then((results) => {
-      let decks = JSON.parse(results)
-      let akeys = [];
-      for (var key in decks) {
-        akeys.push({name: key, count: 0});
-      }
-      this.setState({
-        deckNameList: akeys
-      })
-    })
-  }
+  // componentDidMount() {
+  //   this.dispatch(getDecksFromStorage())
+  // }
 
   // renderItem = ({item}) => {
   //   return <DeckTitleBlock />
@@ -49,11 +65,22 @@ class List extends Component {
     return (
       <View style={{flex: 1,}}>
         <FlatList
-          data={this.state.deckNameList}
-          renderItem={({item}) => <Text>{item.key}</Text>}
+          data={Object.keys(this.props.decks)}
+          renderItem={({item}) => (
+            <View>
+              <TouchableOpacity onPress={() => this.props.navigation.navigate(
+                'SingleDeck',
+                { entryId: {item} })}
+                style={{flex: 1, flexWrap: 'wrap'}}>
+                <Text style={{fontSize: 30}}>Title: {item}</Text>
+                <Text style={{fontSize: 30}}>Number Of Cards: {0}</Text>
+              </TouchableOpacity>
+            </View>
+          )}
         />
       </View>
     )
+               // <this.DeckTitleBlock title={item} cardCount={0} />}
   }
 
   // data={[{key: 'a'}, {key: 'b'}]}
@@ -73,7 +100,7 @@ class List extends Component {
 
 function mapStateToProps (state) {
   return {
-
+    decks: state.decks
   }
 }
 
