@@ -62,10 +62,11 @@ class List extends Component {
   // }
 
   render() {
+    console.log("Decks: ", this.props.decks)
     return (
       <View style={{flex: 1,}}>
         <FlatList
-          data={Object.keys(this.props.decks)}
+          data={this.props.decks ? Object.keys(this.props.decks) : []}
           renderItem={({item}) => (
             <View>
               <TouchableOpacity onPress={() => this.props.navigation.navigate(
