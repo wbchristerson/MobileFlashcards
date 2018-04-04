@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, TouchableOpacity, TextInput, KeyboardAvoidingView } from 'react-native'
+import { View, Text, TouchableOpacity, TextInput, KeyboardAvoidingView, StyleSheet } from 'react-native'
 import { saveDeckTitle, getDecks } from '../utils/DeckAPI'
 
 
@@ -39,13 +39,12 @@ export default class AddDeck extends Component {
   render() {
     let input = this.state.input
     let akeys = [];
-    console.log("Decks: ", this.state.decks)
     for (var key in (this.state.decks)) {
       akeys.push(key);
       console.log('Key: ', key)
     }
     return(
-      <KeyboardAvoidingView behavior='padding'>
+      <KeyboardAvoidingView behavior='padding' style={{height: 30, width: 30}}>
         <View>
           <Text>Keys: {akeys.length}</Text>
           {akeys.map((attr) => {
