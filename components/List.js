@@ -15,11 +15,10 @@ class List extends Component {
       akeys.push(key);
     }
     // data={this.props.decks ? akeys : []}
-    console.log("Decks: ", this.props.decks)
     return (
       <View style={{flex: 1,}}>
         <FlatList
-          data={akeys}
+          data={this.props.decks ? Object.keys(this.props.decks) : []}
           renderItem={({item}) => (
             <View>
               <TouchableOpacity onPress={() => this.props.navigation.navigate(
@@ -27,29 +26,14 @@ class List extends Component {
                 { entryId: {item} })}
                 style={{flex: 1, flexWrap: 'wrap'}}>
                 <Text style={{fontSize: 30}}>Title: {item}</Text>
-                <Text style={{fontSize: 30}}>Number Of Cards: {0}</Text>
+                <Text style={{fontSize: 30}}>Number Of Cards: {this.props.decks[item].questions.length}</Text>
               </TouchableOpacity>
             </View>
           )}
         />
       </View>
     )
-               // <this.DeckTitleBlock title={item} cardCount={0} />}
   }
-
-  // data={[{key: 'a'}, {key: 'b'}]}
-
-  // data={this.state.deckNameList.length === 0 ? [{name: "Internet Stuff", count: 0}] : this.state.deckNameList}
-  // renderItem={({item}) => this.renderItem(item)}
-
-  // <Text style={{fontSize: 50,}}>Hello</Text>
-  // <Text>Hello</Text>
-  // <Text>Hello</Text>
-  // <Text>Hello</Text>
-  // <Text>Hello</Text>
-  // <Text>Hello</Text>
-  // <Text>Hello</Text>
-  // <Text>Hello</Text>
 }
 
 function mapStateToProps (state) {

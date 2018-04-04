@@ -8,17 +8,7 @@ import { addDeck, addDeckToStorage } from '../actions'
 class AddDeck extends Component {
   state = {
     input: '',
-    // decks: {},
   }
-
-  // componentDidMount() {
-  //   getDecks()
-  //   .then((results) => {
-  //     this.setState({
-  //       decks: JSON.parse(results)
-  //     })
-  //   })
-  // }
 
   submit = () => {
     let newTitle = this.state.input
@@ -37,19 +27,15 @@ class AddDeck extends Component {
 
   render() {
     let input = this.state.input
-    console.log("Hello")
     let akeys = [];
-    console.log("A")
     for (var key in (this.props.decks)) {
       akeys.push(key);
     }
-    console.log("B: ", akeys.length)
     return(
       <KeyboardAvoidingView behavior='padding'>
         <View>
           <Text>Keys: {akeys.length}</Text>
           {akeys.map((attr) => {
-            console.log("Red: ", attr)
             return (
               <Text key={attr}>{attr}</Text>
             )

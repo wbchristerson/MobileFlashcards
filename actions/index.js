@@ -1,8 +1,9 @@
-import { getDecks, saveDeckTitle } from '../utils/DeckAPI'
+import { getDecks, saveDeckTitle, addCardToDeck } from '../utils/DeckAPI'
 export const RECEIVE_DECKS = 'RECEIVE_DECKS'
 export const ADD_DECK = 'ADD_DECK'
 export const ADD_DECK_TO_STORAGE = 'ADD_DECK_TO_STORAGE'
 export const ADD_CARD_TO_DECK = 'ADD_CARD_TO_DECK'
+export const SEND_CARD = 'SEND_CARD'
 
 export function receiveDecks(decks) {
   return {
@@ -34,7 +35,7 @@ export const addDeckToStorage = (deck) => dispatch => (
   saveDeckTitle(deck)
 )
 
-export function addCardToDeck(deckTitle, question, answer) {
+export function addCardToDeckLocally(deckTitle, question, answer) {
   return {
     type: ADD_CARD_TO_DECK,
     deck: deckTitle,
@@ -42,3 +43,14 @@ export function addCardToDeck(deckTitle, question, answer) {
     answer,
   }
 }
+
+export function sendCard(card) {
+  return {
+    type: SEND_CARD,
+    card,
+  }
+}
+
+export const addCardToStorage = (deckTitle, question, answer) => dispatch => (
+  addCardToDeck(deckTitle, { question, answer })
+)

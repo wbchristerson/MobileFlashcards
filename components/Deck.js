@@ -22,7 +22,7 @@ class Deck extends Component {
         </TouchableOpacity>
         {this.props.deck.questions.map((q) => {
           return (
-            <View>
+            <View key={q.question}>
               <Text>Question: {q.question}</Text>
               <Text>Answer: {q.answer}</Text>
             </View>

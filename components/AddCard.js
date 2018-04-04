@@ -2,10 +2,10 @@ import React, { Component } from 'react'
 import { View, Text, TouchableOpacity, TextInput, KeyboardAvoidingView, StyleSheet } from 'react-native'
 import { saveDeckTitle, getDecks } from '../utils/DeckAPI'
 import { connect } from 'react-redux'
-import { addDeck, addDeckToStorage, addCardToDeck, addCardToStorage } from '../actions'
+import { addDeck, addDeckToStorage, addCardToDeckLocally, addCardToStorage } from '../actions'
 
 
-class AddDeck extends Component {
+class AddCard extends Component {
   state = {
     questionInput: '',
     answerInput: '',
@@ -34,8 +34,8 @@ class AddDeck extends Component {
   submit = () => {
     let newQuestion = this.state.questionInput
     let newAnswer = this.state.answerInput
-    this.props.dispatch(addCardToDeck(this.props.deck.title, newQuestion, newAnswer))
-    // this.props.dispatch(addCardToStorage(navigation.state.params.entryId.item, newQuestion, newAnswer))
+    this.props.dispatch(addCardToDeckLocally(this.props.deck.title, newQuestion, newAnswer))
+    this.props.dispatch(addCardToStorage(this.props.deck.title, newQuestion, newAnswer))
     this.setState({
       questionInput: '',
       answerInput: '',
@@ -82,4 +82,4 @@ function mapStateToProps (state, { navigation }) {
   }
 }
 
-export default connect(mapStateToProps)(AddDeck)
+export default connect(mapStateToProps)(AddCard)

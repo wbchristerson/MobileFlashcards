@@ -1,4 +1,4 @@
-import { RECEIVE_DECKS, ADD_DECK, ADD_DECK_TO_STORAGE, ADD_CARD_TO_DECK } from '../actions'
+import { RECEIVE_DECKS, ADD_DECK, ADD_DECK_TO_STORAGE, ADD_CARD_TO_DECK, SEND_CARD } from '../actions'
 
 function entries (state = {decks: {}}, action) {
   switch(action.type) {
@@ -8,32 +8,31 @@ function entries (state = {decks: {}}, action) {
         decks: action.decks
       }
     case ADD_DECK:
-      let tempDecks = state.decks
-      tempDecks[action.deck] = { title : action.deck, questions: [] }
-      // tempDecks = {
-      //   [action.deck]: {
-      //     title: action.deck,
-      //     questions: [],
-      //   },
-      //   ...tempDecks,
-      // }
       return {
-        decks: tempDecks,
-        ...state,
+        decks: {
+          ...state.decks,
+          [action.deck]: {
+            title: action.deck,
+            questions: [],
+          },
+        }
       }
     case ADD_DECK_TO_STORAGE:
       return state
     case ADD_CARD_TO_DECK:
-      console.log("Action Title: ", action.deck)
       let oldQuestionSet = state.decks[action.deck].questions
       oldQuestionSet.push({ question: action.question, answer: action.answer })
       return {
-        [action.deck]: {
-          title: action.deck,
-          questions: oldQuestionSet
-        },
-        ...state,
+        decks: {
+          ...state.decks,
+          [action.deck]: {
+            title: action.deck,
+            questions: oldQuestionSet
+          },
+        }
       }
+    case SEND_CARD:
+      return state
     default:
       return state
   }
