@@ -1,7 +1,7 @@
 import { AsyncStorage } from 'react-native'
 
 // MobileFlashcardsDeck
-let DECKS_STORAGE_KEY = 'MobileFlawutqhmzdqg'
+let DECKS_STORAGE_KEY = 'MobileFlawutqhmzdqgl'
 
 /* The deck itself is kept as an object of deck topics/subjects. */
 

@@ -12,11 +12,15 @@ class AddDeck extends Component {
 
   submit = () => {
     let newTitle = this.state.input
-    this.props.dispatch(addDeck(newTitle))
-    this.props.dispatch(addDeckToStorage(newTitle))
-    this.setState({
-      input: ''
-    })
+    if(!newTitle) {
+      alert("Please provide a title for the deck")
+    } else {
+      this.props.dispatch(addDeck(newTitle))
+      this.props.dispatch(addDeckToStorage(newTitle))
+      this.setState({
+        input: ''
+      })
+    }
   }
 
   handleTextChange = (newInput) => {
