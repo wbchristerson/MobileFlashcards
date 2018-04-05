@@ -4,6 +4,7 @@ import List from './components/List'
 import AddDeck from './components/AddDeck'
 import Deck from './components/Deck'
 import AddCard from './components/AddCard'
+import Quiz from './components/Quiz'
 import { TabNavigator, StackNavigator } from 'react-navigation'
 import { createStore, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
@@ -55,13 +56,13 @@ const Tabs = TabNavigator({
   }
 })
 
-function SingleDeck() {
-  return (
-    <View>
-      <Text style={{fontSize: 40}}>Dashboard</Text>
-    </View>
-  )
-}
+// function SingleDeck() {
+//   return (
+//     <View>
+//       <Text style={{fontSize: 40}}>Dashboard</Text>
+//     </View>
+//   )
+// }
 
 const MainNavigator = StackNavigator({
   Home: {
@@ -78,6 +79,9 @@ const MainNavigator = StackNavigator({
   },
   NewCard: {
     screen: AddCard
+  },
+  Quiz: {
+    screen: Quiz
   }
 })
 // '#885ee5'

@@ -20,6 +20,11 @@ class Deck extends Component {
           { entryId: this.props.navigation.state.params.entryId })}>
           <Text>Add Card</Text>
         </TouchableOpacity>
+        <TouchableOpacity onPress={() => this.props.navigation.navigate(
+          'Quiz',
+          { entryId: this.props.navigation.state.params.entryId })}>
+          <Text>Quiz</Text>
+        </TouchableOpacity>
         {this.props.deck.questions.map((q,i) => {
           return (
             <View key={q.question + i.toString()}>
