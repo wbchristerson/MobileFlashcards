@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { View, Text, TouchableOpacity, KeyboardAvoidingView, StyleSheet } from 'react-native'
 import { connect } from 'react-redux'
+import { clearLocalNotification, setLocalNotification } from '../utils/helper'
 
 class Quiz extends Component {
   state = {
@@ -47,11 +48,14 @@ class Quiz extends Component {
       correct: 0,
       incorrect: 0,
     })
+    clearLocalNotification()
+      .then(setLocalNotification)
   }
 
   goBackToDeck = () => {
     this.props.goBack()
-    // console.log("hello")
+    clearLocalNotification()
+      .then(setLocalNotification)
   }
 
   render() {

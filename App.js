@@ -10,6 +10,7 @@ import { createStore, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
 import { Provider } from 'react-redux'
 import reducer from './reducers'
+import { setLocalNotification } from './utils/helper'
 
 const styles = StyleSheet.create({
   container: {
@@ -94,6 +95,10 @@ const store = createStore(
 )
 
 export default class App extends React.Component {
+  componentDidMount () {
+    setLocalNotification()
+  }
+
   render() {
     return (
       <Provider store={store}>
