@@ -19,7 +19,7 @@ Alternatively, follow the instructions below to download to a hard drive:
 * In another terminal window, run the following command to start the project
     - `npm start`
 
-The terminal will then provide you with several options. If you have the application Expo on your device, then you can scan the accompanying QR code that appears, which will then give you the option to run the application on mobile (note: the scan is most easily executed on terminals with a black background and a gray or white foreground).
+The terminal will then provide you with several options. If you have the application [Expo](https://expo.io/) on your device, then you can scan the accompanying QR code that appears, which will then give you the option to run the application on mobile (note: the scan is most easily executed on terminals with a black background and a gray or white foreground).
 
 This project was bootstrapped with [Create React Native App](https://github.com/react-community/create-react-native-app).
 

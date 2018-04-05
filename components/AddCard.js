@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
-import { View, Text, TouchableOpacity, TextInput, KeyboardAvoidingView, StyleSheet } from 'react-native'
+import { View, Text, TouchableOpacity, TextInput, KeyboardAvoidingView, StyleSheet, ToastAndroid } from 'react-native'
 import { saveDeckTitle, getDecks } from '../utils/DeckAPI'
 import { connect } from 'react-redux'
 import { addDeck, addDeckToStorage, addCardToDeckLocally, addCardToStorage } from '../actions'
+import { offBlack, limeGreen, yellow, pineGreen } from '../utils/Colors'
+// import Toast from 'react-native-toast-native'
 
 
 class AddCard extends Component {
@@ -32,14 +34,20 @@ class AddCard extends Component {
   }
 
   submit = () => {
-    let newQuestion = this.state.questionInput
-    let newAnswer = this.state.answerInput
-    this.props.dispatch(addCardToDeckLocally(this.props.deck.title, newQuestion, newAnswer))
-    this.props.dispatch(addCardToStorage(this.props.deck.title, newQuestion, newAnswer))
-    this.setState({
-      questionInput: '',
-      answerInput: '',
-    })
+    let { questionInput, answerInput } = this.state
+    if(!questionInput) {
+      alert("Please provide a question for the card")
+    } else if (!answerInput) {
+      alert("Please provide an answer for the card")
+    } else {
+      this.props.dispatch(addCardToDeckLocally(this.props.deck.title, questionInput, answerInput))
+      this.props.dispatch(addCardToStorage(this.props.deck.title, questionInput, answerInput))
+      this.setState({
+        questionInput: '',
+        answerInput: '',
+      })
+      ToastAndroid.show('Your new card was added!', ToastAndroid.SHORT)
+    }
   }
 
   render() {
@@ -48,9 +56,9 @@ class AddCard extends Component {
     return(
       <KeyboardAvoidingView behavior='padding' style={styles.container}>
         <TextInput style={styles.widthEntry} value={questionInput} placeholder='Question'
-          placeholderTextColor='#75a38e' onChangeText={this.handleQuestionChange}/>
+          placeholderTextColor={pineGreen} onChangeText={this.handleQuestionChange}/>
         <TextInput style={styles.widthEntry} value={answerInput} placeholder='Answer'
-          placeholderTextColor='#75a38e' onChangeText={this.handleAnswerChange}/>
+          placeholderTextColor={pineGreen} onChangeText={this.handleAnswerChange}/>
         <TouchableOpacity style={styles.border} onPress={this.submit}>
           <Text style={styles.submissionText}>SUBMIT</Text>
         </TouchableOpacity>
@@ -62,7 +70,7 @@ class AddCard extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#1DE25F',
+    backgroundColor: limeGreen,
     padding: 15,
     flexDirection: 'column',
     justifyContent: 'space-around',
@@ -75,9 +83,9 @@ const styles = StyleSheet.create({
   border: {
     borderRadius: 4,
     borderWidth: 0.5,
-    borderColor: '#000205',
+    borderColor: offBlack,
     padding: 8,
-    backgroundColor: '#D9EA1E',
+    backgroundColor: yellow,
   },
   submissionText: {
     fontSize: 20,

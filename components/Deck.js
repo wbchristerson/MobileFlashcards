@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { View, Text, StyleSheet, TouchableOpacity, Animated } from 'react-native'
 import { connect } from 'react-redux'
+import { limeGreen, offBlack, blue, red } from '../utils/Colors'
 
 class Deck extends Component {
   state = {
@@ -24,29 +25,44 @@ class Deck extends Component {
   }
   render() {
     const { opacity } = this.state
-    return (
-      <Animated.View style={[styles.container, { opacity }]}>
-        <Text style={styles.textStyleBig}>{this.props.deck.title}</Text>
-        <Text style={styles.textStyle}>{this.props.deck.questions.length} cards</Text>
-        <TouchableOpacity onPress={() => this.props.navigation.navigate(
-          'NewCard',
-          { entryId: this.props.navigation.state.params.entryId })}>
-          <Text style={[styles.textStyle, styles.border, styles.colorBlue]}>Add Card</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => this.props.navigation.navigate(
-          'Quiz',
-          { entryId: this.props.navigation.state.params.entryId })}>
-          <Text style={[styles.textStyle, styles.border, styles.colorRed]}>Quiz</Text>
-        </TouchableOpacity>
-      </Animated.View>
-    )
+    if (typeof this.props.deck !== 'undefined') {
+      return (
+        <Animated.View style={[styles.container, { opacity }]}>
+          <Text style={styles.textStyleBig}>{this.props.deck.title}</Text>
+          <Text style={styles.textStyle}>
+            {this.props.deck.questions.length} {this.props.deck.questions.length === 1 ? 'card' : 'cards'}
+          </Text>
+          <TouchableOpacity onPress={() => this.props.navigation.navigate(
+            'NewCard',
+            { entryId: this.props.navigation.state.params.entryId })}>
+            <Text style={[styles.textStyle, styles.border, styles.colorBlue]}>Add Card</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => this.props.navigation.navigate(
+            'Quiz',
+            { entryId: this.props.navigation.state.params.entryId })}>
+            <Text style={[styles.textStyle, styles.border, styles.colorRed]}>Quiz</Text>
+          </TouchableOpacity>
+        </Animated.View>
+      )
+    } else {
+      return (
+        <Animated.View style={[styles.container, { opacity }]}>
+          <Text style={styles.textStyleBig}>{this.props.entryId}</Text>
+          <TouchableOpacity onPress={() => this.props.navigation.navigate(
+            'NewCard',
+            { entryId: this.props.navigation.state.params.entryId })}>
+            <Text style={[styles.textStyle, styles.border, styles.colorBlue]}>Add Card</Text>
+          </TouchableOpacity>
+        </Animated.View>
+      )
+    }
   }
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#1DE25F',
+    backgroundColor: limeGreen,
     padding: 15,
     flexDirection: 'column',
     justifyContent: 'space-around',
@@ -61,15 +77,15 @@ const styles = StyleSheet.create({
   border: {
     borderRadius: 4,
     borderWidth: 0.5,
-    borderColor: '#000205',
+    borderColor: offBlack,
     padding: 8,
     fontSize: 20,
   },
   colorBlue: {
-    backgroundColor: '#51CAEF',
+    backgroundColor: blue,
   },
   colorRed: {
-    backgroundColor: 'red',
+    backgroundColor: red,
   }
 })
 

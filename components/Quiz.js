@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { View, Text, TouchableOpacity, KeyboardAvoidingView, StyleSheet } from 'react-native'
 import { connect } from 'react-redux'
 import { clearLocalNotification, setLocalNotification } from '../utils/helper'
+import { blue, red, limeGreen, offBlack } from '../utils/Colors'
 
 class Quiz extends Component {
   state = {
@@ -108,7 +109,7 @@ class Quiz extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#1DE25F',
+    backgroundColor: limeGreen,
     padding: 15,
     flexDirection: 'column',
     justifyContent: 'space-around',
@@ -120,14 +121,14 @@ const styles = StyleSheet.create({
   border: {
     borderRadius: 4,
     borderWidth: 0.5,
-    borderColor: '#000205',
+    borderColor: offBlack,
     padding: 8,
   },
   colorBlue: {
-    backgroundColor: '#51CAEF',
+    backgroundColor: blue,
   },
   colorRed: {
-    backgroundColor: 'red',
+    backgroundColor: red,
   },
 })
 

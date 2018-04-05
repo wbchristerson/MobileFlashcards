@@ -11,11 +11,12 @@ import thunk from 'redux-thunk'
 import { Provider } from 'react-redux'
 import reducer from './reducers'
 import { setLocalNotification } from './utils/helper'
+import { purple, white, black, limeGreen, lightBlue } from './utils/Colors'
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#1DE25F',
+    backgroundColor: limeGreen,
     alignItems: 'center',
   },
   test: {
@@ -43,10 +44,10 @@ const Tabs = TabNavigator({
     header: null
   },
   tabBarOptions: {
-    activeTintColor: Platform.OS === 'ios' ? '#292477' : '#FFF',
+    activeTintColor: Platform.OS === 'ios' ? purple : white,
     style: {
       height: 56,
-      backgroundColor: Platform.OS === 'ios' ? '#FFF' : '#292477',
+      backgroundColor: Platform.OS === 'ios' ? white : purple,
       shadowColor: 'rgba(0, 0, 0, 0.24)',
       shadowOffset: {
         width: 0,
@@ -65,9 +66,9 @@ const MainNavigator = StackNavigator({
   SingleDeck: {
     screen: Deck,
     navigationOptions: {
-      headerTintColor: 'black',
+      headerTintColor: black,
       headerStyle: {
-        backgroundColor: '#74e0db',
+        backgroundColor: lightBlue,
       }
     }
   },

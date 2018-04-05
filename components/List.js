@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, FlatList, TouchableOpacity } from 'react-native
 import { getDecks } from '../utils/DeckAPI'
 import { connect } from 'react-redux'
 import { getDecksFromStorage } from '../actions'
+import { limeGreen, paleWhite } from '../utils/Colors'
 
 class List extends Component {
   componentDidMount() {
@@ -42,14 +43,14 @@ class List extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#1DE25F',
+    backgroundColor: limeGreen,
     padding: 15,
   },
   deckStyle: {
     flex: 1,
     borderRadius: 4,
     borderWidth: 0.5,
-    borderColor: '#D6D7DA',
+    borderColor: paleWhite,
     padding: 15,
   },
   cardText: {

@@ -22,7 +22,7 @@ export const getDecksFromStorage = () => dispatch => (
 export function addDeck(deck) {
   return {
     type: ADD_DECK,
-    deck
+    deck,
   }
 }
 
@@ -33,9 +33,9 @@ export function sendDeckToStorage(deck) {
   }
 }
 
-export const addDeckToStorage = (deck) => dispatch => (
+export const addDeckToStorage = (deck) => dispatch => {
   saveDeckTitle(deck)
-)
+}
 
 export function addCardToDeckLocally(deckTitle, question, answer) {
   return {

@@ -3,6 +3,7 @@ import { View, Text, TouchableOpacity, TextInput, KeyboardAvoidingView, StyleShe
 import { saveDeckTitle, getDecks } from '../utils/DeckAPI'
 import { connect } from 'react-redux'
 import { addDeck, addDeckToStorage } from '../actions'
+import { limeGreen, offBlack, blueGray } from '../utils/Colors'
 
 
 class AddDeck extends Component {
@@ -20,6 +21,10 @@ class AddDeck extends Component {
       this.setState({
         input: ''
       })
+      // this.props.navigation.navigate(
+      //   'SingleDeck',
+      //   { entryId: newTitle }
+      // )
     }
   }
 
@@ -39,7 +44,7 @@ class AddDeck extends Component {
       <KeyboardAvoidingView behavior='padding' style={styles.container}>
         <Text style={styles.info}>What is the title of your new deck?</Text>
         <TextInput style={styles.inputOption} value={input} onChangeText={this.handleTextChange} placeholder='Deck Title'
-          placeholderTextColor='#3E5982' />
+          placeholderTextColor={blueGray} />
         <TouchableOpacity onPress={this.submit}>
           <Text style={styles.border}>SUBMIT</Text>
         </TouchableOpacity>
@@ -51,7 +56,7 @@ class AddDeck extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#1DE25F',
+    backgroundColor: limeGreen,
     padding: 15,
     flexDirection: 'column',
     alignItems: 'center'
@@ -67,7 +72,7 @@ const styles = StyleSheet.create({
   border: {
     borderRadius: 4,
     borderWidth: 0.5,
-    borderColor: '#000205',
+    borderColor: offBlack,
     padding: 8,
     fontSize: 20,
   }
