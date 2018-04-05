@@ -14,7 +14,6 @@ class List extends Component {
     for (var key in (this.props.decks)) {
       akeys.push(key);
     }
-    // data={this.props.decks ? akeys : []}
     return (
       <View style={{flex: 1,}}>
         <FlatList
@@ -43,28 +42,22 @@ class List extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#1de25f',
+    backgroundColor: '#1DE25F',
     padding: 15,
   },
   deckStyle: {
     flex: 1,
     borderRadius: 4,
     borderWidth: 0.5,
-    borderColor: '#d6d7da',
+    borderColor: '#D6D7DA',
     padding: 15,
-    // flexDirection: 'column',
-    // alignItems: 'center',
   },
   cardText: {
     fontSize: 25,
     flexDirection: 'row',
     flex: 1,
     justifyContent: 'center',
-
   }
-  // deckListStyle: {
-  //
-  // }
 })
 
 function mapStateToProps (state) {

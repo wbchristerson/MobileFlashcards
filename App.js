@@ -15,14 +15,15 @@ import { setLocalNotification } from './utils/helper'
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#1de25f',
+    backgroundColor: '#1DE25F',
     alignItems: 'center',
-    // justifyContent: 'center',
   },
   test: {
     flex: 1,
   }
 });
+
+/* Coloring options borrowed from React Native course */
 
 const Tabs = TabNavigator({
   Decks: {
@@ -42,10 +43,10 @@ const Tabs = TabNavigator({
     header: null
   },
   tabBarOptions: {
-    activeTintColor: Platform.OS === 'ios' ? '#292477' : '#fff',
+    activeTintColor: Platform.OS === 'ios' ? '#292477' : '#FFF',
     style: {
       height: 56,
-      backgroundColor: Platform.OS === 'ios' ? '#fff' : '#292477',
+      backgroundColor: Platform.OS === 'ios' ? '#FFF' : '#292477',
       shadowColor: 'rgba(0, 0, 0, 0.24)',
       shadowOffset: {
         width: 0,
@@ -56,14 +57,6 @@ const Tabs = TabNavigator({
     }
   }
 })
-
-// function SingleDeck() {
-//   return (
-//     <View>
-//       <Text style={{fontSize: 40}}>Dashboard</Text>
-//     </View>
-//   )
-// }
 
 const MainNavigator = StackNavigator({
   Home: {
@@ -85,7 +78,6 @@ const MainNavigator = StackNavigator({
     screen: Quiz
   }
 })
-// '#885ee5'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
@@ -111,5 +103,3 @@ export default class App extends React.Component {
     );
   }
 }
-// <Tabs/>
-// <Stack />

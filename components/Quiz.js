@@ -61,14 +61,14 @@ class Quiz extends Component {
   render() {
     let cards = this.props.deck.questions
     return (
-      <View>
+      <View style={styles.container}>
         <Text>
           Cards Remaining: {cards.length - this.state.currentCard}
         </Text>
         {this.state.currentCard < cards.length ?
           (
-            <View>
-              <Text>
+            <View style={styles.container}>
+              <Text style={styles.textLarge}>
                 {cards[this.state.currentCard].question}
               </Text>
               <TouchableOpacity onPress={this.getAnswer}>
@@ -77,26 +77,26 @@ class Quiz extends Component {
                 </Text>
               </TouchableOpacity>
               <TouchableOpacity onPress={this.markCorrect}>
-                <Text>
+                <Text style={[styles.textLarge, styles.border, styles.colorBlue]}>
                   Correct
                 </Text>
               </TouchableOpacity>
               <TouchableOpacity onPress={this.markIncorrect}>
-                <Text>
+                <Text style={[styles.textLarge, styles.border, styles.colorRed]}>
                   Incorrect
                 </Text>
               </TouchableOpacity>
             </View>
           ) : (
-            <View>
+            <View style={styles.container}>
               <Text>
                 You scored {this.state.correct} out of {cards.length}!
               </Text>
-              <TouchableOpacity onPress={this.reset}>
-                <Text>Restart Quiz</Text>
+              <TouchableOpacity style={[styles.border, styles.colorRed]} onPress={this.reset}>
+                <Text style={styles.textLarge}>Restart Quiz</Text>
               </TouchableOpacity>
-              <TouchableOpacity onPress={this.goBackToDeck}>
-                <Text>Go Back To Deck</Text>
+              <TouchableOpacity style={[styles.border, styles.colorBlue]} onPress={this.goBackToDeck}>
+                <Text style={styles.textLarge}>Go Back To Deck</Text>
               </TouchableOpacity>
             </View>
           )}
@@ -105,6 +105,31 @@ class Quiz extends Component {
   }
 }
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#1DE25F',
+    padding: 15,
+    flexDirection: 'column',
+    justifyContent: 'space-around',
+    alignItems: 'center'
+  },
+  textLarge: {
+    fontSize: 20,
+  },
+  border: {
+    borderRadius: 4,
+    borderWidth: 0.5,
+    borderColor: '#000205',
+    padding: 8,
+  },
+  colorBlue: {
+    backgroundColor: '#51CAEF',
+  },
+  colorRed: {
+    backgroundColor: 'red',
+  },
+})
 
 function mapStateToProps (state, { navigation }) {
   const { entryId } = navigation.state.params

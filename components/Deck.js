@@ -26,38 +26,51 @@ class Deck extends Component {
     const { opacity } = this.state
     return (
       <Animated.View style={[styles.container, { opacity }]}>
-        <Text>{this.props.deck.title}</Text>
-        <Text>{this.props.deck.questions.length} cards</Text>
+        <Text style={styles.textStyleBig}>{this.props.deck.title}</Text>
+        <Text style={styles.textStyle}>{this.props.deck.questions.length} cards</Text>
         <TouchableOpacity onPress={() => this.props.navigation.navigate(
           'NewCard',
           { entryId: this.props.navigation.state.params.entryId })}>
-          <Text>Add Card</Text>
+          <Text style={[styles.textStyle, styles.border, styles.colorBlue]}>Add Card</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => this.props.navigation.navigate(
           'Quiz',
           { entryId: this.props.navigation.state.params.entryId })}>
-          <Text>Quiz</Text>
+          <Text style={[styles.textStyle, styles.border, styles.colorRed]}>Quiz</Text>
         </TouchableOpacity>
-        {this.props.deck.questions.map((q,i) => {
-          return (
-            <View key={q.question + i.toString()}>
-              <Text>Question: {q.question}</Text>
-              <Text>Answer: {q.answer}</Text>
-            </View>
-          )
-        })}
       </Animated.View>
     )
   }
-  // <Text>Entry Detail - {JSON.stringify(this.props.navigation.state.params.entryId)}</Text>
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#1de25f',
+    backgroundColor: '#1DE25F',
     padding: 15,
+    flexDirection: 'column',
+    justifyContent: 'space-around',
+    alignItems: 'center'
   },
+  textStyle: {
+    fontSize: 20
+  },
+  textStyleBig: {
+    fontSize: 30
+  },
+  border: {
+    borderRadius: 4,
+    borderWidth: 0.5,
+    borderColor: '#000205',
+    padding: 8,
+    fontSize: 20,
+  },
+  colorBlue: {
+    backgroundColor: '#51CAEF',
+  },
+  colorRed: {
+    backgroundColor: 'red',
+  }
 })
 
 function mapStateToProps(state, { navigation }) {

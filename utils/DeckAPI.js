@@ -39,6 +39,5 @@ export function addCardToDeck(title, card) {
         }
       }))
     }
-
   })
 }

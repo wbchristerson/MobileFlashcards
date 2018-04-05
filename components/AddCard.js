@@ -46,17 +46,43 @@ class AddCard extends Component {
     let questionInput = this.state.questionInput
     let answerInput = this.state.answerInput
     return(
-      <KeyboardAvoidingView behavior='padding'>
-        <Text>Leprechaun</Text>
-        <TextInput value={questionInput} placeholder='Question' placeholderTextColor='#75a38e' onChangeText={this.handleQuestionChange}/>
-        <TextInput value={answerInput} placeholder='Answer' placeholderTextColor='#75a38e' onChangeText={this.handleAnswerChange}/>
-        <TouchableOpacity onPress={this.submit}>
-          <Text>SUBMIT</Text>
+      <KeyboardAvoidingView behavior='padding' style={styles.container}>
+        <TextInput style={styles.widthEntry} value={questionInput} placeholder='Question'
+          placeholderTextColor='#75a38e' onChangeText={this.handleQuestionChange}/>
+        <TextInput style={styles.widthEntry} value={answerInput} placeholder='Answer'
+          placeholderTextColor='#75a38e' onChangeText={this.handleAnswerChange}/>
+        <TouchableOpacity style={styles.border} onPress={this.submit}>
+          <Text style={styles.submissionText}>SUBMIT</Text>
         </TouchableOpacity>
       </KeyboardAvoidingView>
     )
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#1DE25F',
+    padding: 15,
+    flexDirection: 'column',
+    justifyContent: 'space-around',
+    alignItems: 'center'
+  },
+  widthEntry: {
+    width: 300,
+    fontSize: 20,
+  },
+  border: {
+    borderRadius: 4,
+    borderWidth: 0.5,
+    borderColor: '#000205',
+    padding: 8,
+    backgroundColor: '#D9EA1E',
+  },
+  submissionText: {
+    fontSize: 20,
+  },
+})
 
 function mapStateToProps (state, { navigation }) {
   const { entryId } = navigation.state.params
