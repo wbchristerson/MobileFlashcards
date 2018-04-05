@@ -15,7 +15,6 @@ export function receiveDecks(decks) {
 export const getDecksFromStorage = () => dispatch => (
   getDecks()
   .then((results) => {
-    console.log("Results: ", results)
     dispatch(receiveDecks(JSON.parse(results)))
   })
 )

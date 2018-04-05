@@ -20,13 +20,17 @@ class List extends Component {
         <FlatList
           data={this.props.decks ? Object.keys(this.props.decks) : []}
           renderItem={({item}) => (
-            <View>
+            <View style={styles.deckStyle}>
               <TouchableOpacity onPress={() => this.props.navigation.navigate(
                 'SingleDeck',
                 { entryId: {item} })}
-                style={{flex: 1, flexWrap: 'wrap'}}>
-                <Text style={{fontSize: 30}}>Title: {item}</Text>
-                <Text style={{fontSize: 30}}>Number Of Cards: {this.props.decks[item].questions.length}</Text>
+                style={{flex: 1, flexWrap: 'wrap', flexDirection: 'column'}}>
+                <View style={{flex: 1, flexDirection: 'row', justifyContent: 'center'}}>
+                  <Text style={styles.cardText}>{item}</Text>
+                </View>
+                <View style={{flex: 1, flexDirection: 'row', justifyContent: 'center'}}>
+                  <Text style={styles.cardText}>{this.props.decks[item].questions.length} {this.props.decks[item].questions.length === 1 ? 'card' : 'cards'}</Text>
+                </View>
               </TouchableOpacity>
             </View>
           )}
@@ -35,6 +39,33 @@ class List extends Component {
     )
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#1de25f',
+    padding: 15,
+  },
+  deckStyle: {
+    flex: 1,
+    borderRadius: 4,
+    borderWidth: 0.5,
+    borderColor: '#d6d7da',
+    padding: 15,
+    // flexDirection: 'column',
+    // alignItems: 'center',
+  },
+  cardText: {
+    fontSize: 25,
+    flexDirection: 'row',
+    flex: 1,
+    justifyContent: 'center',
+
+  }
+  // deckListStyle: {
+  //
+  // }
+})
 
 function mapStateToProps (state) {
   return {

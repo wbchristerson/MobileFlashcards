@@ -57,23 +57,6 @@ class AddCard extends Component {
     )
   }
 }
-// <KeyboardAvoidingView behavior='padding'>
-// <View>
-// <Text>Keys: {akeys.length}</Text>
-// {akeys.map((attr) => {
-//   console.log("Red: ", attr)
-//   return (
-//     <Text key={attr}>{attr}</Text>
-//   )
-// })}
-// </View>
-// <Text>Title: {input}</Text>
-// <Text>What is the title of your new deck?</Text>
-// <TextInput value={input} onChangeText={this.handleTextChange}/>
-// <TouchableOpacity onPress={this.submit}>
-// <Text>SUBMIT</Text>
-// </TouchableOpacity>
-// </KeyboardAvoidingView>
 
 function mapStateToProps (state, { navigation }) {
   const { entryId } = navigation.state.params
