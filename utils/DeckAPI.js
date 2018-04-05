@@ -10,13 +10,13 @@ export function getDecks() {
 }
 
 
-export function getDeck(id) {
-  return AsyncStorage.getItem(DECKS_STORAGE_KEY)
-    .then((results) => {
-      let obj = JSON.parse(results)
-      return obj[id]
-    })
-}
+// export function getDeck(id) {
+//   return AsyncStorage.getItem(DECKS_STORAGE_KEY)
+//     .then((results) => {
+//       let obj = JSON.parse(results)
+//       return obj[id]
+//     })
+// }
 
 
 export function saveDeckTitle(newTitle) {

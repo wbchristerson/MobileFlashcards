@@ -1,8 +1,20 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity, Animated } from 'react-native'
 import { connect } from 'react-redux'
 
 class Deck extends Component {
+  state = {
+    opacity: new Animated.Value(0)
+  }
+  /* The information related to animation provided in the following
+   * function is heavily based on the React video about Animations in
+   * the React Native course, Lesson 5, Native Features */
+  componentDidMount() {
+    const { opacity } = this.state
+
+    Animated.timing(opacity, { toValue: 1, duration: 1200 })
+      .start()
+  }
   static navigationOptions = ({ navigation }) => {
     const { entryId } = navigation.state.params
     let strId = entryId.item
@@ -11,8 +23,9 @@ class Deck extends Component {
     }
   }
   render() {
+    const { opacity } = this.state
     return (
-      <View style={styles.container}>
+      <Animated.View style={[styles.container, { opacity }]}>
         <Text>{this.props.deck.title}</Text>
         <Text>{this.props.deck.questions.length} cards</Text>
         <TouchableOpacity onPress={() => this.props.navigation.navigate(
@@ -33,7 +46,7 @@ class Deck extends Component {
             </View>
           )
         })}
-      </View>
+      </Animated.View>
     )
   }
   // <Text>Entry Detail - {JSON.stringify(this.props.navigation.state.params.entryId)}</Text>
