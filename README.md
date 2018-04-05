@@ -22,3 +22,5 @@ Alternatively, follow the instructions below to download to a hard drive:
 The terminal will then provide you with several options. If you have the application Expo on your device, then you can scan the accompanying QR code that appears, which will then give you the option to run the application on mobile (note: the scan is most easily executed on terminals with a black background and a gray or white foreground).
 
 This project was bootstrapped with [Create React Native App](https://github.com/react-community/create-react-native-app).
+
+For complete details about running react-native applications such as this one on mobile devices, see [here](https://github.com/react-community/create-react-native-app/blob/master/react-native-scripts/template/README.md).
