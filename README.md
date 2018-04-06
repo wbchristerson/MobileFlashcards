@@ -1,6 +1,15 @@
 # Mobile Flashcards
 
-This project is a flashcard application for Android mobile devices in which users may create collections of flashcards and quiz themselves on the decks that they create. I created the application using `react-native` along with `redux`.
+This project is a flashcard application for Android mobile devices in which users may create collections of flashcards and quiz themselves on the decks that they create. I created the application using `react-native` along with `redux`, i.e. this project was bootstrapped with [Create React Native App](https://github.com/react-community/create-react-native-app).
+
+## Structure
+
+* The application begins with a tab navigator composed of two screens:
+  - A list view of all currently available flashcard decks. As a starting point, two decks are already provided: "Spanish" (9 cards) and "Architecture" (2 cards). You may quiz yourself with these or add to these decks (note: these two starting decks are static in the sense that any additional cards added to these decks will not appear upon page refreshes/reloads. This is a bug and it is not an issue with any decks created by the user).
+  - A form to add an additional deck ("new deck"). Submitting the form will take the user to the new page for that deck.
+* Individual deck pages can be reached by clicking on a deck from the list view. This lists the name of the deck, the number of cards, and buttons for adding a card to the deck as well as for quizzing one's self.
+* The "new card" form is similar to the "new deck" form.
+* The quiz page asks the deck questions in order with an available button to check the answer and then grade one's self.
 
 ## Downloading The Project
 
@@ -21,6 +30,5 @@ Alternatively, follow the instructions below to download to a hard drive:
 
 The terminal will then provide you with several options. If you have the application [Expo](https://expo.io/) on your device, then you can scan the accompanying QR code that appears, which will then give you the option to run the application on mobile (note: the scan is most easily executed on terminals with a black background and a gray or white foreground).
 
-This project was bootstrapped with [Create React Native App](https://github.com/react-community/create-react-native-app).
 
 For complete details about running react-native applications such as this one on mobile devices, see [here](https://github.com/react-community/create-react-native-app/blob/master/react-native-scripts/template/README.md).
