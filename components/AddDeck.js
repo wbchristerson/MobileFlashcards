@@ -55,6 +55,7 @@ const styles = StyleSheet.create({
     backgroundColor: limeGreen,
     padding: 15,
     flexDirection: 'column',
+    justifyContent: 'space-around',
     alignItems: 'center'
   },
   info: {
