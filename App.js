@@ -97,6 +97,7 @@ export default class App extends React.Component {
       <Provider store={store}>
         <View style={styles.container}>
           <View style={{flexDirection: 'row', flex: 1}}>
+          <StatusBar backgroundColor="blue" barStyle="light-content" />
             <MainNavigator />
           </View>
         </View>

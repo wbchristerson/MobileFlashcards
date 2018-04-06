@@ -18,44 +18,33 @@ class Deck extends Component {
   }
   static navigationOptions = ({ navigation }) => {
     const { entryId } = navigation.state.params
-    let strId = entryId.item
+    let strId = entryId.newTitle
     return {
       title: strId
     }
   }
   render() {
     const { opacity } = this.state
-    if (typeof this.props.deck !== 'undefined') {
-      return (
-        <Animated.View style={[styles.container, { opacity }]}>
-          <Text style={styles.textStyleBig}>{this.props.deck.title}</Text>
-          <Text style={styles.textStyle}>
-            {this.props.deck.questions.length} {this.props.deck.questions.length === 1 ? 'card' : 'cards'}
-          </Text>
-          <TouchableOpacity onPress={() => this.props.navigation.navigate(
-            'NewCard',
-            { entryId: this.props.navigation.state.params.entryId })}>
-            <Text style={[styles.textStyle, styles.border, styles.colorBlue]}>Add Card</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => this.props.navigation.navigate(
-            'Quiz',
-            { entryId: this.props.navigation.state.params.entryId })}>
-            <Text style={[styles.textStyle, styles.border, styles.colorRed]}>Quiz</Text>
-          </TouchableOpacity>
-        </Animated.View>
-      )
-    } else {
-      return (
-        <Animated.View style={[styles.container, { opacity }]}>
-          <Text style={styles.textStyleBig}>{this.props.entryId}</Text>
-          <TouchableOpacity onPress={() => this.props.navigation.navigate(
-            'NewCard',
-            { entryId: this.props.navigation.state.params.entryId })}>
-            <Text style={[styles.textStyle, styles.border, styles.colorBlue]}>Add Card</Text>
-          </TouchableOpacity>
-        </Animated.View>
-      )
-    }
+    let currDeck = this.props.deck
+
+    return (
+      <Animated.View style={[styles.container, { opacity }]}>
+        <Text style={styles.textStyleBig}>{currDeck.title}</Text>
+        <Text style={styles.textStyle}>
+          {currDeck.questions.length} {currDeck.questions.length === 1 ? 'card' : 'cards'}
+        </Text>
+        <TouchableOpacity onPress={() => this.props.navigation.navigate(
+          'NewCard',
+          { entryId: {newTitle: this.props.entryId.newTitle} })}>
+          <Text style={[styles.textStyle, styles.border, styles.colorBlue]}>Add Card</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => this.props.navigation.navigate(
+          'Quiz',
+          { entryId: {newTitle: this.props.entryId.newTitle} })}>
+          <Text style={[styles.textStyle, styles.border, styles.colorRed]}>Quiz</Text>
+        </TouchableOpacity>
+      </Animated.View>
+    )
   }
 }
 
@@ -91,10 +80,9 @@ const styles = StyleSheet.create({
 
 function mapStateToProps(state, { navigation }) {
   const { entryId } = navigation.state.params
-
   return {
     entryId,
-    deck: state.decks[entryId.item]
+    deck: state.decks[entryId.newTitle]
   }
 }
 

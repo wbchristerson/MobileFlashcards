@@ -23,7 +23,7 @@ class List extends Component {
             <View style={styles.deckStyle}>
               <TouchableOpacity onPress={() => this.props.navigation.navigate(
                 'SingleDeck',
-                { entryId: {item} })}
+                { entryId: {newTitle: item} })}
                 style={{flex: 1, flexWrap: 'wrap', flexDirection: 'column'}}>
                 <View style={{flex: 1, flexDirection: 'row', justifyContent: 'center'}}>
                   <Text style={styles.cardText}>{item}</Text>

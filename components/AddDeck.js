@@ -21,10 +21,10 @@ class AddDeck extends Component {
       this.setState({
         input: ''
       })
-      // this.props.navigation.navigate(
-      //   'SingleDeck',
-      //   { entryId: newTitle }
-      // )
+      this.props.navigation.navigate(
+        'SingleDeck',
+        { entryId: {newTitle} }
+      )
     }
   }
 
@@ -36,10 +36,6 @@ class AddDeck extends Component {
 
   render() {
     let input = this.state.input
-    let akeys = [];
-    for (var key in (this.props.decks)) {
-      akeys.push(key);
-    }
     return(
       <KeyboardAvoidingView behavior='padding' style={styles.container}>
         <Text style={styles.info}>What is the title of your new deck?</Text>

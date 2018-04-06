@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { View, Text, TouchableOpacity, KeyboardAvoidingView, StyleSheet } from 'react-native'
 import { connect } from 'react-redux'
 import { clearLocalNotification, setLocalNotification } from '../utils/helper'
-import { blue, red, limeGreen, offBlack } from '../utils/Colors'
+import { blue, red, white, offBlack } from '../utils/Colors'
 
 class Quiz extends Component {
   state = {
@@ -14,7 +14,7 @@ class Quiz extends Component {
 
   static navigationOptions = ({ navigation }) => {
     const { entryId } = navigation.state.params
-    let strId = entryId.item
+    let strId = entryId.newTitle
     return {
       title: `Quiz On '${strId}'`
     }
@@ -93,10 +93,10 @@ class Quiz extends Component {
               <Text>
                 You scored {this.state.correct} out of {cards.length}!
               </Text>
-              <TouchableOpacity style={[styles.border, styles.colorRed]} onPress={this.reset}>
+              <TouchableOpacity style={[styles.border, styles.colorBlue]} onPress={this.reset}>
                 <Text style={styles.textLarge}>Restart Quiz</Text>
               </TouchableOpacity>
-              <TouchableOpacity style={[styles.border, styles.colorBlue]} onPress={this.goBackToDeck}>
+              <TouchableOpacity style={[styles.border, styles.colorRed]} onPress={this.goBackToDeck}>
                 <Text style={styles.textLarge}>Go Back To Deck</Text>
               </TouchableOpacity>
             </View>
@@ -109,7 +109,7 @@ class Quiz extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: limeGreen,
+    backgroundColor: white,
     padding: 15,
     flexDirection: 'column',
     justifyContent: 'space-around',
@@ -135,7 +135,7 @@ const styles = StyleSheet.create({
 function mapStateToProps (state, { navigation }) {
   const { entryId } = navigation.state.params
   return {
-    deck: state.decks[entryId.item],
+    deck: state.decks[entryId.newTitle],
   }
 }
 

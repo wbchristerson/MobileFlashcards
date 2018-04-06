@@ -4,8 +4,6 @@ import { saveDeckTitle, getDecks } from '../utils/DeckAPI'
 import { connect } from 'react-redux'
 import { addDeck, addDeckToStorage, addCardToDeckLocally, addCardToStorage } from '../actions'
 import { offBlack, limeGreen, yellow, pineGreen } from '../utils/Colors'
-// import Toast from 'react-native-toast-native'
-
 
 class AddCard extends Component {
   state = {
@@ -15,7 +13,7 @@ class AddCard extends Component {
 
   static navigationOptions = ({ navigation }) => {
     const { entryId } = navigation.state.params
-    let strId = entryId.item
+    let strId = entryId.newTitle
     return {
       title: `Add Card To '${strId}'`
     }
@@ -95,7 +93,7 @@ const styles = StyleSheet.create({
 function mapStateToProps (state, { navigation }) {
   const { entryId } = navigation.state.params
   return {
-    deck: state.decks[entryId.item],
+    deck: state.decks[entryId.newTitle],
   }
 }
 

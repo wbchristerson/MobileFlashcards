@@ -1,9 +1,29 @@
 import { AsyncStorage } from 'react-native'
 
 // MobileFlashcardsDeck
-let DECKS_STORAGE_KEY = 'MobileFlawutqhmzdqgl'
+let DECKS_STORAGE_KEY = 'MobileFlawutqhmzdqglu'
 
 /* The deck itself is kept as an object of deck topics/subjects. */
+
+export function setUpDecks() {
+  let spanishDeck = {
+    Spanish: {
+      title: 'Spanish',
+      questions: [
+        { question: "What does 'hola' mean?", answer: "Hello" },
+        { question: "What does 'adios' mean?", answer: "Goodbye" },
+        { question: "What does 'la manzana' mean?", answer: "The Apple" },
+        { question: "What does 'la fruta' mean?", answer: "The Fruit" },
+        { question: "What does 'trabajo' mean?", answer: "Work" },
+        { question: "What does 'buenas tardes' mean?", answer: "Good Afternoon" },
+        { question: "What does 'la naranja' mean?", answer: "The Orange" },
+        { question: "What does 'el gato' mean?", answer: "The Cat" },
+        { question: "What does 'el fuego' mean?", answer: "The Fire" },
+      ]
+    }
+  }
+  return AsyncStorage.mergeItem(DECKS_STORAGE_KEY, JSON.stringify(spanishDeck))
+}
 
 export function getDecks() {
   return AsyncStorage.getItem(DECKS_STORAGE_KEY)

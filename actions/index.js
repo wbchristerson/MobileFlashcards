@@ -1,4 +1,4 @@
-import { getDecks, saveDeckTitle, addCardToDeck } from '../utils/DeckAPI'
+import { getDecks, saveDeckTitle, addCardToDeck, setUpDecks } from '../utils/DeckAPI'
 export const RECEIVE_DECKS = 'RECEIVE_DECKS'
 export const ADD_DECK = 'ADD_DECK'
 export const ADD_DECK_TO_STORAGE = 'ADD_DECK_TO_STORAGE'
@@ -13,9 +13,12 @@ export function receiveDecks(decks) {
 }
 
 export const getDecksFromStorage = () => dispatch => (
-  getDecks()
-  .then((results) => {
-    dispatch(receiveDecks(JSON.parse(results)))
+  setUpDecks()
+  .then(() => {
+    getDecks()
+    .then((results) => {
+      dispatch(receiveDecks(JSON.parse(results)))
+    })
   })
 )
 
