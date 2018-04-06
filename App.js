@@ -1,5 +1,5 @@
-import React from 'react';
-import { StyleSheet, Text, View, Platform, StatusBar } from 'react-native'
+import React from 'react'
+import { StyleSheet, Text, View, Platform } from 'react-native'
 import List from './components/List'
 import AddDeck from './components/AddDeck'
 import Deck from './components/Deck'
@@ -12,20 +12,6 @@ import { Provider } from 'react-redux'
 import reducer from './reducers'
 import { setLocalNotification } from './utils/helper'
 import { purple, white, black, limeGreen, lightBlue } from './utils/Colors'
-import { Constants } from 'expo'
-
-/* Function to generate a status bar;
- * This specific function was taken from the UdaciFitness app for the Udacity React Native course here:
- * https://github.com/udacity/reactnd-UdaciFitness-complete/blob/useLocalNotification/App.js
- */
-
-function UdaciStatusBar ({backgroundColor, ...props}) {
-  return (
-    <View style={{ backgroundColor, height: Constants.statusBarHeight }}>
-      <StatusBar translucent backgroundColor={backgroundColor} {...props} />
-    </View>
-  )
-}
 
 const styles = StyleSheet.create({
   container: {
@@ -111,7 +97,6 @@ export default class App extends React.Component {
       <Provider store={store}>
         <View style={styles.container}>
           <View style={{flexDirection: 'row', flex: 1}}>
-            <UdaciStatusBar backgroundColor={purple} barStyle="light-content" />
             <MainNavigator />
           </View>
         </View>
