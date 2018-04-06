@@ -19,6 +19,7 @@ class List extends Component {
       <View style={{flex: 1,}}>
         <FlatList
           data={this.props.decks ? Object.keys(this.props.decks) : []}
+          keyExtractor={() => Math.random().toString(36).substr(2, 9)}
           renderItem={({item}) => (
             <View style={styles.deckStyle}>
               <TouchableOpacity onPress={() => this.props.navigation.navigate(
