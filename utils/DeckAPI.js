@@ -20,6 +20,13 @@ export function setUpDecks() {
         { question: "What does 'el gato' mean?", answer: "The Cat" },
         { question: "What does 'el fuego' mean?", answer: "The Fire" },
       ]
+    },
+    Architecture: {
+      title: 'Architecture',
+      questions: [
+        { question: "What famous structure in Rome was once used for gladiatorial fights?", answer: "The Colosseum" },
+        { question: "What is the total length of the roadway of the Brooklyn Bridge?", answer: "5989 feet" }
+      ]
     }
   }
   return AsyncStorage.mergeItem(DECKS_STORAGE_KEY, JSON.stringify(spanishDeck))
