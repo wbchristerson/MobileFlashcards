@@ -3,7 +3,8 @@ import { View, Text, TouchableOpacity, TextInput, KeyboardAvoidingView, StyleShe
 import { saveDeckTitle, getDecks } from '../utils/DeckAPI'
 import { connect } from 'react-redux'
 import { addDeck, addDeckToStorage, addCardToDeckLocally, addCardToStorage } from '../actions'
-import { offBlack, limeGreen, yellow, pineGreen } from '../utils/Colors'
+import styles from './AddCardStyle'
+import { pineGreen } from '../utils/Colors'
 
 class AddCard extends Component {
   state = {
@@ -64,30 +65,6 @@ class AddCard extends Component {
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: limeGreen,
-    padding: 15,
-    flexDirection: 'column',
-    justifyContent: 'space-around',
-    alignItems: 'center'
-  },
-  widthEntry: {
-    width: 300,
-    fontSize: 20,
-  },
-  border: {
-    borderRadius: 4,
-    borderWidth: 0.5,
-    borderColor: offBlack,
-    padding: 8,
-    backgroundColor: yellow,
-  },
-  submissionText: {
-    fontSize: 20,
-  },
-})
 
 function mapStateToProps (state, { navigation }) {
   const { entryId } = navigation.state.params

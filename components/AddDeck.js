@@ -4,6 +4,7 @@ import { saveDeckTitle, getDecks } from '../utils/DeckAPI'
 import { connect } from 'react-redux'
 import { addDeck, addDeckToStorage } from '../actions'
 import { limeGreen, offBlack, blueGray } from '../utils/Colors'
+import styles from './AddDeckStyles'
 
 
 class AddDeck extends Component {
@@ -49,31 +50,6 @@ class AddDeck extends Component {
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: limeGreen,
-    padding: 15,
-    flexDirection: 'column',
-    justifyContent: 'space-around',
-    alignItems: 'center'
-  },
-  info: {
-    fontSize: 20,
-  },
-  inputOption: {
-    flexDirection: 'row',
-    width: 300,
-    fontSize: 20,
-  },
-  border: {
-    borderRadius: 4,
-    borderWidth: 0.5,
-    borderColor: offBlack,
-    padding: 8,
-    fontSize: 20,
-  }
-})
 
 function mapStateToProps (state) {
   return {

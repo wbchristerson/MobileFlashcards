@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { View, Text, StyleSheet, TouchableOpacity, Animated } from 'react-native'
 import { connect } from 'react-redux'
-import { limeGreen, offBlack, blue, red } from '../utils/Colors'
+import styles from './DeckStyles'
 
 class Deck extends Component {
   state = {
@@ -48,35 +48,6 @@ class Deck extends Component {
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: limeGreen,
-    padding: 15,
-    flexDirection: 'column',
-    justifyContent: 'space-around',
-    alignItems: 'center'
-  },
-  textStyle: {
-    fontSize: 20
-  },
-  textStyleBig: {
-    fontSize: 30
-  },
-  border: {
-    borderRadius: 4,
-    borderWidth: 0.5,
-    borderColor: offBlack,
-    padding: 8,
-    fontSize: 20,
-  },
-  colorBlue: {
-    backgroundColor: blue,
-  },
-  colorRed: {
-    backgroundColor: red,
-  }
-})
 
 function mapStateToProps(state, { navigation }) {
   const { entryId } = navigation.state.params

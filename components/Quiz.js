@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { View, Text, TouchableOpacity, KeyboardAvoidingView, StyleSheet } from 'react-native'
 import { connect } from 'react-redux'
 import { clearLocalNotification, setLocalNotification } from '../utils/helper'
-import { blue, red, white, offBlack } from '../utils/Colors'
+import styles from './QuizStyles'
 
 class Quiz extends Component {
   state = {
@@ -106,32 +106,6 @@ class Quiz extends Component {
     )
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: white,
-    padding: 15,
-    flexDirection: 'column',
-    justifyContent: 'space-around',
-    alignItems: 'center'
-  },
-  textLarge: {
-    fontSize: 20,
-  },
-  border: {
-    borderRadius: 4,
-    borderWidth: 0.5,
-    borderColor: offBlack,
-    padding: 8,
-  },
-  colorBlue: {
-    backgroundColor: blue,
-  },
-  colorRed: {
-    backgroundColor: red,
-  },
-})
 
 function mapStateToProps (state, { navigation }) {
   const { entryId } = navigation.state.params
