@@ -61,20 +61,21 @@ class Quiz extends Component {
 
   render() {
     let cards = this.props.deck.questions
+    let { currentCard, covered, correct, incorrect } = this.state
     return (
       <View style={styles.container}>
         <Text>
-          Cards Remaining: {cards.length - this.state.currentCard}
+          Cards Remaining: {cards.length - currentCard}
         </Text>
-        {this.state.currentCard < cards.length ?
+        {currentCard < cards.length ?
           (
             <View style={styles.container}>
               <Text style={styles.textLarge}>
-                {cards[this.state.currentCard].question}
+                {cards[currentCard].question}
               </Text>
               <TouchableOpacity onPress={this.getAnswer}>
                 <Text>
-                  {this.state.covered ? 'Show Answer' : cards[this.state.currentCard].answer}
+                  {covered ? 'Show Answer' : cards[currentCard].answer}
                 </Text>
               </TouchableOpacity>
               <TouchableOpacity onPress={this.markCorrect}>
@@ -91,7 +92,7 @@ class Quiz extends Component {
           ) : (
             <View style={styles.container}>
               <Text>
-                You scored {this.state.correct} out of {cards.length}!
+                You scored {correct} out of {cards.length}!
               </Text>
               <TouchableOpacity style={[styles.border, styles.colorBlue]} onPress={this.reset}>
                 <Text style={styles.textLarge}>Restart Quiz</Text>

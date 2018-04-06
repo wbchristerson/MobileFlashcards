@@ -49,8 +49,7 @@ class AddCard extends Component {
   }
 
   render() {
-    let questionInput = this.state.questionInput
-    let answerInput = this.state.answerInput
+    let { questionInput, answerInput } = this.state
     return(
       <KeyboardAvoidingView behavior='padding' style={styles.container}>
         <TextInput style={styles.widthEntry} value={questionInput} placeholder='Question'
