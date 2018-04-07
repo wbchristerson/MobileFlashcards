@@ -13,6 +13,8 @@ import reducer from './reducers'
 import { setLocalNotification } from './utils/helper'
 import { purple, white, black, limeGreen, lightBlue } from './utils/Colors'
 
+import { Constants } from 'expo'
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -53,6 +55,8 @@ const Tabs = TabNavigator({
         width: 0,
         height: 3
       },
+      marginTop: Constants.statusBarHeight,
+      paddingBottom: Constants.statusBarHeight,
       shadowRadius: 6,
       shadowOpacity: 1
     }
