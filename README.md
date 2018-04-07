@@ -10,6 +10,7 @@ This project is a flashcard application for Android mobile devices in which user
 * Individual deck pages can be reached by clicking on a deck from the list view. This lists the name of the deck, the number of cards, and buttons for adding a card to the deck as well as for quizzing one's self.
 * The "new card" form is similar to the "new deck" form.
 * The quiz page asks the deck questions in order with an available button to check the answer and then grade one's self.
+* To maintain data for this application, I used the `AsyncStorage` key-value storage system heavily. 
 
 ## Downloading The Project
 
