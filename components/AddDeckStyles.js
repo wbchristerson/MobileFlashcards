@@ -10,12 +10,14 @@ export default StyleSheet.create({
     alignItems: 'center'
   },
   info: {
-    fontSize: 20,
+    fontSize: 30,
+    textAlign: 'center'
   },
   inputOption: {
     flexDirection: 'row',
     width: 300,
-    fontSize: 20,
+    fontSize: 30,
+    lineHeight: 50,
   },
   border: {
     borderRadius: 4,
