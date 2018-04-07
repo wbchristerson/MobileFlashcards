@@ -41,6 +41,8 @@ Alternatively, follow the instructions below to download to a hard drive:
 * Find the folder `MobileFlashcards-master` in your Downloads folder or wherever it was placed on your device.
 * Right click and choose "Extract All".
 
+In all cases, having downloaded the files:
+
 * To install all dependencies from the command line, run the following command in the terminal within the project folder:
     - `npm install`
 * In another terminal window, run the following command to start the project
