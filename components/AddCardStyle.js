@@ -12,7 +12,8 @@ export default StyleSheet.create({
   },
   widthEntry: {
     width: 300,
-    fontSize: 20,
+    fontSize: 30,
+    lineHeight: 50,
   },
   border: {
     borderRadius: 4,
@@ -24,4 +25,7 @@ export default StyleSheet.create({
   submissionText: {
     fontSize: 20,
   },
+  introText: {
+    fontSize: 30,
+  }
 })
