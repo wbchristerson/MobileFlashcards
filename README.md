@@ -10,6 +10,9 @@ This project is a flashcard application for Android mobile devices in which user
     <img src="images/Main Screen.png" alt="Main Screen">
   </p>
   - A form to add an additional deck ("new deck"). Submitting the form will take the user to the new page for that deck.
+  <p align="center">
+    <img src="images/New Deck Screen.png" alt="Main Screen">
+  </p>
 * Individual deck pages can be reached by clicking on a deck from the list view. This lists the name of the deck, the number of cards, and buttons for adding a card to the deck as well as for quizzing one's self.
 * The "new card" form is similar to the "new deck" form.
 * The quiz page asks the deck questions in order with an available button to check the answer and then grade one's self.
