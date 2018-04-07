@@ -23,9 +23,9 @@ This project is a flashcard application for Android mobile devices in which user
   </p>
 * The quiz page displays the deck questions in order with an available button to check the answer and then grade one's self.
   <p align="center">
-    <img src="images/Quiz Question Screen.png" alt="Quiz Question Screen">
+    <img align="left" src="images/Quiz Question Screen.png" alt="Quiz Question Screen">
     <img src="images/Quiz Answer Screen.png" alt="Quiz Answer Screen">
-    <img src="images/Finished Quiz Screen.png" alt="Finished Quiz Screen">
+    <img align="right" src="images/Finished Quiz Screen.png" alt="Finished Quiz Screen">
   </p>
 * To maintain data for this application, I used the `AsyncStorage` key-value storage system heavily.
 
