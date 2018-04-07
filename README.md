@@ -1,6 +1,6 @@
 # Mobile Flashcards
 
-This project is a flashcard application for Android mobile devices in which users may create collections of flashcards and quiz themselves on the decks that they create. I created the application using `react-native` along with `redux`. (This project was bootstrapped with [Create React Native App](https://github.com/react-community/create-react-native-app).)
+This project is a flashcard application for Android mobile devices in which users may create collections of flashcards and quiz themselves on the decks that they compile. I created the application using `react-native` along with `redux`. (This project was bootstrapped with [Create React Native App](https://github.com/react-community/create-react-native-app).)
 
 ## Structure
 
