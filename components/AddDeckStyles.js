@@ -1,10 +1,9 @@
 import { StyleSheet } from 'react-native'
-import { limeGreen, offBlack } from '../utils/Colors'
+import { offBlack } from '../utils/Colors'
 
 export default StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: limeGreen,
     padding: 15,
     flexDirection: 'column',
     justifyContent: 'space-around',
