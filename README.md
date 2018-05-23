@@ -6,13 +6,13 @@ This project is a flashcard application for Android mobile devices in which user
 
 * The application begins with a tab navigator composed of two screens:
   - A list view of all currently available flashcard decks. As a starting point, two decks are already provided: "Spanish" (9 cards) and "Architecture" (2 cards). You may quiz yourself with these or add to these decks (note: these two starting decks are static in the sense that any additional cards added to these decks will not appear upon page refreshes/reloads. This is a bug and it is not an issue with any decks created by the user).
-  <p align="center">
-    <img src="images/Main Screen.png" alt="Main Screen">
-  </p>
+    <p align="center">
+      <img src="images/Main Screen.png" alt="Main Screen">
+    </p>
   - A form to add an additional deck ("new deck"). Submitting the form will take the user to the new page for that deck.
-  <p align="center">
-    <img src="images/New Deck Screen.png" alt="New Deck Screen">
-  </p>
+    <p align="center">
+      <img src="images/New Deck Screen.png" alt="New Deck Screen">
+    </p>
 * Individual deck pages can be reached by clicking on a deck from the list view. This lists the name of the deck, the number of cards, and buttons for adding a card to the deck as well as for quizzing one's self.
   <p align="center">
     <img src="images/Deck Screen.png" alt="Deck Screen">
