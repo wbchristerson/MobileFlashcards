@@ -14,19 +14,19 @@ This project is a flashcard application for Android mobile devices in which user
       <img src="images/New Deck Screen.png" alt="New Deck Screen">
     </p>
 * Individual deck pages can be reached by clicking on a deck from the list view. This lists the name of the deck, the number of cards, and buttons for adding a card to the deck as well as for quizzing one's self.
-  <p align="center">
-    <img src="images/Deck Screen.png" alt="Deck Screen">
-  </p>
+    <p align="center">
+      <img src="images/Deck Screen.png" alt="Deck Screen">
+    </p>
 * The "new card" form is similar to the "new deck" form.
-  <p align="center">
-    <img src="images/New Card Screen.png" alt="New Card Screen">
-  </p>
+    <p align="center">
+      <img src="images/New Card Screen.png" alt="New Card Screen">
+    </p>
 * The quiz page displays the deck questions in order with an available button to check the answer and then grade one's self.
-  <p align="center">
-    <img align="left" src="images/Quiz Question Screen.png" alt="Quiz Question Screen">
-    <img src="images/Quiz Answer Screen.png" alt="Quiz Answer Screen">
-    <img align="right" src="images/Finished Quiz Screen.png" alt="Finished Quiz Screen">
-  </p>
+    <p align="center">
+      <img align="left" src="images/Quiz Question Screen.png" alt="Quiz Question Screen">
+      <img src="images/Quiz Answer Screen.png" alt="Quiz Answer Screen">
+      <img align="right" src="images/Finished Quiz Screen.png" alt="Finished Quiz Screen">
+    </p>
 * To maintain data for this application, I used the `AsyncStorage` key-value storage system heavily.
 
 ## Downloading The Project
