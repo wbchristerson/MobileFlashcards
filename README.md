@@ -2,7 +2,7 @@
 
 This project is a flashcard application for Android mobile devices in which users may create collections of flashcards and quiz themselves on the decks that they compile. I created the application using `react-native` along with `redux`. (This project was bootstrapped with [Create React Native App](https://github.com/react-community/create-react-native-app).)
 
-## Structure
+## Design
 
 * The application begins with a tab navigator composed of two screens:
   - A list view of all currently available flashcard decks. As a starting point, two decks are already provided: "Spanish" (9 cards) and "Architecture" (2 cards). You may quiz yourself with these or add to these decks (note: these two starting decks are static in the sense that any additional cards added to these decks will not appear upon page refreshes/reloads. This is a bug and it is not an issue with any decks created by the user).
